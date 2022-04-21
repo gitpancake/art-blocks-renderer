@@ -3,13 +3,13 @@
   import Progress from "./Progress.svelte";
   import { isFrameSequenceSupported } from "./recording";
 
-  let id = "9000139";
+  let id = "3000495";
   let fps = 30;
   let fpsPresets = [24, 25, 30, 50, 60];
   let duration = 4;
   let width = 512;
   let height = 512;
-  let format = "gif";
+  let format = "mp4";
   let dithering = false;
 
   let rendering = false;
