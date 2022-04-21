@@ -2,9 +2,9 @@
 // https://github.com/r4v3n-art/art-blocks-gallery
 
 const PROJECT_EXPLORER =
-	'https://api.thegraph.com/subgraphs/name/artblocks/art-blocks';
+	'https://api.thegraph.com/subgraphs/name/artblocks/art-blocks-artist-staging';
 
-const contracts = ['0xbdde08bd57e5c9fd563ee7ac61618cb2ecdc0ce0'];
+const contracts = ['0x86732cd7dc0a6fc559c62736083298e78310b8dc'];
 
 const contract_in = JSON.stringify(contracts);
 
@@ -30,7 +30,6 @@ async function fetchTokensByOwner(ownerAddress, opt = {}) {
 	const { limit = 100 } = opt;
 	const lastId = opt.lastId || opt.lastId === 0 ? opt.lastId : '-1';
 	ownerAddress = ownerAddress.toLowerCase();
-	console.log(lastId, ownerAddress, contract_in);
 	const { tokens } = await query(
 		PROJECT_EXPLORER,
 		`{
@@ -48,7 +47,6 @@ async function fetchTokensByOwner(ownerAddress, opt = {}) {
 async function fetchTokensByProject(projectId, opt = {}) {
 	const { limit = 100 } = opt;
 	const lastId = opt.lastId || opt.lastId === 0 ? opt.lastId : '-1';
-	console.log(projectId, contract_in);
 	const { tokens } = await query(
 		PROJECT_EXPLORER,
 		`{
@@ -86,11 +84,11 @@ async function fetchPlatform() {
 }
 
 // Gets details about a specific project ID
-async function fetchProject(id) {
+async function fetchProject(id, contractAddresses, projectExplorer) {
 	const { projects } = await query(
-		PROJECT_EXPLORER,
+		projectExplorer,
 		`{
-  projects(where: { projectId: "${id}", contract_in: ${contract_in}}) {
+  projects(where: { projectId: "${id}", contract_in: ${contractAddresses} }) {
     projectId
     name
     scriptJSON
@@ -123,15 +121,15 @@ async function fetchProject(id) {
 	return result;
 }
 
-async function fetchToken(id) {
+async function fetchToken(id, contractAddresses, projectExplorer) {
 	const { tokens } = await query(
-		PROJECT_EXPLORER,
+		projectExplorer,
 		`{
-  tokens(where: { tokenId: "${id}", contract_in: ${contract_in} }) {
-    tokenId
-    hash
-  }
-}
+        tokens(where: { tokenId: "${id}", contract_in: ${contractAddresses} }) {
+          tokenId
+          hash
+        }
+      }
 `,
 	);
 	if (!tokens || tokens.length === 0) return null;

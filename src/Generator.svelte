@@ -12,6 +12,8 @@
 
   const dispatch = createEventDispatcher();
 
+  export let contractAddress = "";
+  export let projectExplorer = "";
   export let id = "0";
   export let fps = 30;
   export let width = 1080;
@@ -35,7 +37,7 @@
 
   let encoder;
   let promise, visualizer;
-  $: promise = start(id);
+  $: promise = start(id, contractAddress, projectExplorer);
 
   async function receive(evt) {
     // console.log(evt, evt.data);
@@ -93,8 +95,15 @@
     };
   });
 
-  async function start(id) {
-    const data = await fetchData(id);
+  async function start(id, contractAddress, projectExplorer) {
+    id = String(id);
+    projectExplorer = String(projectExplorer)
+    const contractAddresses = JSON.stringify([contractAddress])
+
+    alert(contractAddresses);
+    alert(id)
+    alert(projectExplorer)
+    const data = await fetchData(id, contractAddresses, projectExplorer);
 
     const autoWidth = !width;
     const autoHeight = !height;
@@ -160,16 +169,18 @@
     };
   }
 
-  async function fetchData(id) {
-    id = String(id);
+  async function fetchData(id, contractAddress, projectExplorer) {
+   
     const idNum = parseInt(id, 10);
+
     if (isNaN(idNum)) {
       throw new Error("id query parameter is not a number");
     }
+
     const C = 1000000;
     const projNumber = Math.floor(idNum / C);
-    const project = await fetchProject(projNumber);
-    const token = await fetchToken(id);
+    const project = await fetchProject(projNumber, contractAddress, projectExplorer);
+    const token = await fetchToken(id, contractAddress, projectExplorer);
     return {
       id,
       project,

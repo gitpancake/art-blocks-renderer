@@ -3,6 +3,12 @@
   import Progress from "./Progress.svelte";
   import { isFrameSequenceSupported } from "./recording";
 
+
+  let mainnet = "https://api.thegraph.com/subgraphs/name/artblocks/art-blocks"
+  let ropsten ="https://api.thegraph.com/subgraphs/name/artblocks/art-blocks-artist-staging"
+
+  let projectExplorer = mainnet;
+  let contractAddress = "0x86732cd7dc0a6fc559c62736083298e78310b8dc";
   let id = "3000495";
   let fps = 30;
   let fpsPresets = [24, 25, 30, 50, 60];
@@ -15,6 +21,7 @@
   let rendering = false;
   let totalFrames;
   let progress = 0;
+  $: console.log('Change selected', projectExplorer)
   $: totalFrames = Math.ceil(duration * fps);
 
   function startRender() {
@@ -36,13 +43,17 @@
   <div class="info">
     <h1>ArtBlocks Recorder</h1>
     <p>
-      Enter your configuration and click the <strong>Render</strong> button to export
+      Enter your configuration and click the render button to export
       the high quality media.
     </p>
     <p>
       Made by
       <a target="_blank" href="https://twitter.com/mattdesl">@mattdesl</a>.
     </p>
+    <small>
+      Extended by
+      <a target="_blank" href="https://twitter.com/gitpancake">@gitpancake</a>.
+    </small>
   </div>
   {#if rendering}
     <div class="row">
@@ -64,9 +75,23 @@
       {height}
       {format}
       {id}
+      {contractAddress}
+      {projectExplorer}
     />
   {:else}
     <div class="settings">
+       <div class="field project-explorer-container">
+         <div class="project-explorer">
+          <select bind:value={projectExplorer}>
+            <option value={mainnet}>mainnet</option>
+            <option value={ropsten}>ropsten</option>
+          </select>
+        </div>
+      </div>
+      <div class="field contract-id-container">
+        <caption class="tab">Contract ID</caption>
+        <input class="contract-id" type="text" bind:value={contractAddress} />
+      </div>
       <div class="field token-id-container">
         <caption class="tab">Token ID</caption>
         <input class="token-id" type="text" bind:value={id} />
@@ -272,6 +297,15 @@
   .token-id {
     width: 100px;
   }
+
+  .contract-id {
+    width: 350px;
+  }
+
+  .project-explorer {
+    width: 750px;
+  }
+
   .fps,
   .duration,
   .dimensions {
