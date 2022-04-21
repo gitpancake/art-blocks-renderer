@@ -9,12 +9,12 @@
 
   let projectExplorer = mainnet;
   let contractAddress = "0x86732cd7dc0a6fc559c62736083298e78310b8dc";
-  let id = "3000495";
+  let id = "";
   let fps = 30;
   let fpsPresets = [24, 25, 30, 50, 60];
-  let duration = 4;
-  let width = 512;
-  let height = 512;
+  let duration = 60;
+  let width = 0;
+  let height = 0;
   let format = "mp4";
   let dithering = false;
 
@@ -42,10 +42,8 @@
 <main>
   <div class="info">
     <h1>ArtBlocks Recorder</h1>
-    <p>
-      Enter your configuration and click the render button to export
-      the high quality media.
-    </p>
+    <small>bing bong</small>
+    <p>Select art blocks env, enter contract & token id, configure output, then click render</p>
     <p>
       Made by
       <a target="_blank" href="https://twitter.com/mattdesl">@mattdesl</a>.
@@ -182,7 +180,7 @@
         {/if}
       {/await}
 
-      <button on:click={startRender} class="render button">Render</button>
+      <button disabled={!id} on:click={startRender} class="render button">Render</button>
     </div>
   {/if}
 </main>
