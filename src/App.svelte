@@ -42,8 +42,8 @@
 <main>
   <div class="info">
     <h1>ArtBlocks Recorder</h1>
-    <small>bing bong</small>
-    <p>Select art blocks env, enter contract & token id, configure output, then click render</p>
+    <p>Select Ropsten/Mainnet (Art Blocks Environment)</p><p>Then enter Contract Address</p> <p>Enter Token ID</p><p> Configure desired output, then click <strong>render</strong></p>
+    <hr />
     <p>
       Made by
       <a target="_blank" href="https://twitter.com/mattdesl">@mattdesl</a>.
@@ -79,6 +79,7 @@
   {:else}
     <div class="settings">
        <div class="field project-explorer-container">
+        <caption>Network</caption>
          <div class="project-explorer">
           <select bind:value={projectExplorer}>
             <option value={mainnet}>mainnet</option>
@@ -87,7 +88,7 @@
         </div>
       </div>
       <div class="field contract-id-container">
-        <caption class="tab">Contract ID</caption>
+        <caption class="tab">Contract Address</caption>
         <input class="contract-id" type="text" bind:value={contractAddress} />
       </div>
       <div class="field token-id-container">
