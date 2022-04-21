@@ -100,9 +100,6 @@
     projectExplorer = String(projectExplorer)
     const contractAddresses = JSON.stringify([contractAddress])
 
-    alert(contractAddresses);
-    alert(id)
-    alert(projectExplorer)
     const data = await fetchData(id, contractAddresses, projectExplorer);
 
     const autoWidth = !width;
