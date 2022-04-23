@@ -45,7 +45,7 @@ async function createMP4Encoder(opts = {}) {
     // groupOfPictures: fps,
     // sequential: true,
     format: "avc",
-    codec: "avc1.420034",
+    codec: "av01.2.31H.12",
   });
   return {
     type: "video/mp4",

@@ -42,7 +42,7 @@ export async function createMP4Encoder(opts = {}) {
     width,
     height,
     fps,
-    codec: "avc1.420034",
+    codec: "av01.2.31H.12",
     encoderOptions: {
       // bitrate: 180_000_000,
       // bitrateMode: "constant",
