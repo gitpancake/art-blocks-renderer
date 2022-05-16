@@ -8,13 +8,13 @@
   let ropsten ="https://api.thegraph.com/subgraphs/name/artblocks/art-blocks-artist-staging"
 
   let projectExplorer = mainnet;
-  let contractAddress = "0x86732cd7dc0a6fc559c62736083298e78310b8dc";
-  let id = "";
-  let fps = 30;
+  let contractAddress = "0xa7d8d9ef8d8ce8992df33d8b8cf4aebabd5bd270";
+  let id = "3100000";
+  let fps = 60;
   let fpsPresets = [24, 25, 30, 50, 60];
-  let duration = 60;
-  let width = 0;
-  let height = 0;
+  let duration = 150;
+  let width = 2160;
+  let height = 3840;
   let format = "mp4";
   let dithering = false;
 
@@ -100,15 +100,11 @@
         <select bind:value={format}>
           <option value="gif">gif</option>
           <option value="png">png still</option>
+          <option value="mp4">mp4</option>
           <!-- <option value="inline">inline</option> -->
           {#if isFrameSequenceSupported()}
             <option value="frames">png sequence</option>
           {/if}
-          {#await canUseMP4() then canUse}
-            {#if canUse}
-              <option value="mp4">mp4</option>
-            {/if}
-          {/await}
         </select>
       </div>
       {#if format === "gif"}
