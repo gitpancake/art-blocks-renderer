@@ -12,7 +12,7 @@
   let id = "3100000";
   let fps = 60;
   let fpsPresets = [24, 25, 30, 50, 60];
-  let duration = 150;
+  let duration = 300;
   let width = 2160;
   let height = 3840;
   let format = "mp4";
