@@ -10,7 +10,7 @@
   let projectExplorer = mainnet;
   let contractAddress = "0xa7d8d9ef8d8ce8992df33d8b8cf4aebabd5bd270";
   let id = "3100000";
-  let fps = 60;
+  let fps = 24;
   let fpsPresets = [24, 25, 30, 50, 60];
   let duration = 300;
   let width = 2160;
