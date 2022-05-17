@@ -46,7 +46,7 @@
     <hr />
     <p>
       Made by
-      <a target="_blank" href="https://twitter.com/mattdesl">@mattdesl</a>.
+      <a target="_blank" href="https://twitter.com/gitpancake">@gitpancake</a>.
     </p>
     <small>
       Extended by

@@ -7,7 +7,7 @@
   "author": {
     "name": "Matt DesLauriers",
     "email": "dave.des@gmail.com",
-    "url": "https://github.com/mattdesl"
+    "url": "https://github.com/gitpancake"
   },
   "dependencies": {
     "esbuild": "^0.12.9",
@@ -33,10 +33,10 @@
   "keywords": [],
   "repository": {
     "type": "git",
-    "url": "git://github.com/mattdesl/artblocks-renderer.git"
+    "url": "git://github.com/gitpancake/artblocks-renderer.git"
   },
-  "homepage": "https://github.com/mattdesl/artblocks-renderer",
+  "homepage": "https://github.com/gitpancake/artblocks-renderer",
   "bugs": {
-    "url": "https://github.com/mattdesl/artblocks-renderer/issues"
+    "url": "https://github.com/gitpancake/artblocks-renderer/issues"
   }
 }
