@@ -3,10 +3,6 @@
 
 const PROJECT_EXPLORER = "https://api.thegraph.com/subgraphs/name/artblocks/art-blocks-artist-staging";
 
-const contracts = ["0x86732cd7dc0a6fc559c62736083298e78310b8dc", "0x145789247973c5d612bf121e9e4eef84b63eb707"];
-
-const contract_in = JSON.stringify(contracts);
-
 // Utility to query from subgraph
 async function query(url, query) {
   const response = await fetch(url, {
@@ -61,7 +57,6 @@ async function fetchTokensByProject(projectId, opt = {}) {
   return tokens;
 }
 
-// Gets AB contracts currently in use and the nextProjectId
 async function fetchPlatform() {
   const { contracts } = await query(
     PROJECT_EXPLORER,
